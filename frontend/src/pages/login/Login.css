@@ -1,0 +1,91 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+/*Left Wrapper*/
+.left-wrapper {
+    background-image: url("https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2023/09/26194839/ISS_Graphic_Pattern_RGB_Slate_Dark.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.left-wrapper-text {
+    font-size: 7rem; 
+    color: #fff; 
+}
+
+/*Right Wrapper*/
+.right-wrapper {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: #efefef;
+    font-size: 16px;
+}
+
+.right-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.right-form-username {
+    outline: none;
+    height: 40px;
+    border: 2px solid #d7d7d7c9;
+}
+
+
+.username-label {
+    padding-bottom: 5px;
+}
+
+.password-label {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.right-form-username:hover{
+    border: 2px solid #06C168;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.submit {
+    width: 100px;
+    height: 45px;
+    border: 1px solid #06C168;
+    margin-top: 8px;
+    background-color: #06C168;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+
+
