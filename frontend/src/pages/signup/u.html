@@ -1,0 +1,102 @@
+<style>
+	.grid-container {
+		display: grid; grid-template-columns: repeat(3, 1fr);/* Ensures exactly 4 columns */
+		margin: auto; margin-top: -15px; width: 100%; max-width: 1000px;
+	}
+	
+	.responsive-text-dashboard {
+		display: flex; justify-content: center; align-items: center; font-size: 30px; font-weight: 600; padding-top: 30px;
+	}
+	
+	.responsive-text {
+		display: flex; justify-content: center; align-items: center; margin-top: -10px;
+	}
+	
+	.explore-courses-link {
+		text-decoration: underline; color: #06C168; cursor: pointer;
+	}
+	
+	.grid-item img {
+		width: 95%; height: 170px; cursor: pointer; border-radius: 10px;
+	}
+	/* Modal styling */
+	
+	#videoModal {
+		display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center;
+	}
+	
+	#videoModalContent {
+		position: relative; width: 80%; max-width: 800px; background: white; padding: 20px; border-radius: 10px; text-align: center;
+	}
+	
+	#closeModal {
+		position: absolute; top: -15px; right: -15px; cursor: pointer; font-size: 24px; color: #000; background: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; z-index: 1001;
+	}
+	
+	#modalVideo {
+		width: 100%; height: auto;
+	}
+	/* Responsive Styling */
+	
+	@media (max-width: 768px) {
+		.responsive-text {
+			font-size: 13px;
+		}
+		#videoModalContent {
+			width: 95%; max-width: 500px; padding: 10px;
+		}
+		.grid-container {
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));/* Makes it responsive */
+			margin-top: 0;
+		}
+	}
+
+</style>
+
+<p class="responsive-text-dashboard">Student Dashboard</p>
+
+<p class="responsive-text">Welcome to ISS CPD Hub! Please&nbsp;<a href="#" id="explore-courses" class="explore-courses-link">click here</a>, to watch a video on how to navigate the platform.</p>
+<div class="grid-container">
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/7fc/9fb/628/thinkific-img-1.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/a7f/e82/094/thinkific-img-2.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/602/840/30b/thinkific-img-3.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/7fc/9fb/628/thinkific-img-1.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/a7f/e82/094/thinkific-img-2.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<div class="grid-item"><img src="https://files.cdn.thinkific.com/file_uploads/716313/images/602/840/30b/thinkific-img-3.webp" class="fr-fic fr-dib fr-draggable"></div>
+	<!-- Video Modal -->
+	<div id="videoModal">
+		<div id="videoModalContent"><span id="closeModal">&times;</span><span class="fr-video fr-deletable fr-fvc fr-dvi fr-draggable" contenteditable="false"><video id="modalVideo" controls="" class="fr-fvc fr-dvi fr-draggable"><source src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2023/07/19110613/Justin-Video-w-NG.m4v" type="video/mp4">Your browser does not support the video tag.</video></span></div></div>
+	<script>
+		// Open the modal and play video
+		document.getElementById('explore-courses').addEventListener('click', function(event)
+		{
+			event.preventDefault();
+			var videoModal = document.getElementById('videoModal');
+			videoModal.style.display = 'flex';
+		});
+
+		// Close the modal and stop the video
+		document.getElementById('closeModal').addEventListener('click', function()
+		{
+			var videoModal = document.getElementById('videoModal');
+			videoModal.style.display = 'none';
+			var modalVideo = document.getElementById('modalVideo');
+			modalVideo.pause(); // Pause the video when modal is closed
+			modalVideo.currentTime = 0; // Reset to the beginning
+		});
+
+		// Close the modal if clicking outside the video content
+		window.addEventListener('click', function(event)
+		{
+			var videoModal = document.getElementById('videoModal');
+			if (event.target === videoModal)
+			{
+				videoModal.style.display = 'none';
+				var modalVideo = document.getElementById('modalVideo');
+				modalVideo.pause();
+				modalVideo.currentTime = 0;
+			}
+		});
+
+	</script>
+</div>
