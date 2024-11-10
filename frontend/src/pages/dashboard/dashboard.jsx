@@ -1,15 +1,16 @@
-import React from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import DashboardLeftCol from "../../components/DashboardLeftCol";
+import DashboardRightCol from "../../components/DashboardRightCol";
 
 const Dashboard = () => {
-    const location = useLocation();
-
     
     return (
         <div className="dashboard-wrapper">
-            <h1>Hello {location.state.id} and welcome on board</h1>
+            <DashboardLeftCol />
+            <DashboardRightCol />
         </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;

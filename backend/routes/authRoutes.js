@@ -19,21 +19,33 @@ router.post('/register', async (req, res) => {
 });
 
 // Login user
-router.post('/', async (req, res) => {
-  const { email, password } = req.body;
-  try {
+//const jwt = require('jsonwebtoken'); // Make sure you have this at the top
 
-    const user = await User.findOne({ email });
-    if (!user || !(await user.comparePassword(password))) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required" });
+  }
+
+  try {
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
+    // Compare the hashed password using bcrypt
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Incorrect password" });
+    }
 
-  } catch (error) {
-    res.status(500).json({ message: 'Error logging in' });
+    // If login is successful, respond with success message and token
+    res.json({ message: "Success", token: "your_generated_token_here" });
+  } catch (err) {
+    console.error("Error during login:", err);
+    res.status(500).json({ message: "Internal server error" });
   }
-}); 
+});
+ 
 
 module.exports = router;

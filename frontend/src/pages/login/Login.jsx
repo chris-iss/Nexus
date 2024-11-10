@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import '../login/Login.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaLongArrowAltRight } from "react-icons/fa";
 import axios from "axios";
-
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
-    /////////// LOGIN - Function handling form inputs /////////////////////////////
     const handleEmailInput = (e) => setEmail(e.target.value)
     const handlePasswordInput = (e) => setPassword(e.target.value)
-
-    // Validation Functions ///
+ 
     const validateEmail = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const validatePassword = () => password.toString().length >= 6;
 
@@ -49,12 +47,29 @@ const Login = () => {
 
         ////// Submit Data to MongoDb ///////////////////////
         try {
-            const response = await axios.post('/', { email, password });
-            localStorage.setItem('token', response.data.token);
-            alert('Login successful');
+            const response = await axios.post('http://localhost:3001/login', { email, password });
+            console.log(response)
+        
+            // Check if the response indicates success
+            if (response.data.message === "Success") {
+                localStorage.setItem('token', response || '');
+                navigate("/dashboard");
+            } else {
+                // Handle other cases where login is not successful
+                console.log('Login failed:', response.data.message || 'Unexpected response');
+                alert(response.data.message || 'Login failed');
+            }
         } catch (error) {
-            alert('Login failed');
+            if (error.response) {
+                console.log("Server error response:", error.response.data);
+                alert(error.response.data.message || "Login failed due to server error");
+            } else {
+                console.log("Network or other error:", error.message);
+                alert("Network error. Please try again.");
+            }
         }
+        
+        
     }
      
     return (
@@ -67,6 +82,8 @@ const Login = () => {
             </div>
             <div className='right-wrapper'>
                     <form className='right-form-wrapper' onSubmit={handleLoginSubmit}>
+                        <div className='signup-header'>Log In</div>
+                        <div className='signup-text'>Not a member yet? &nbsp;<span className='sigup-text-span'><Link to="/register" className='sigup-text-span'>Sign Up</Link></span></div>
                         <div className='login-input-wrapper'>
                             <label className='username-label'>Email Address</label>
                             <input type='email' value={email} className='right-form-username' onChange={handleEmailInput} name="username" />
@@ -85,13 +102,6 @@ const Login = () => {
                                 <p>Remember Me</p>
                             </div>
                             <button className='submit'>Log In</button>
-                        </div>
-
-                        <div className='signUp-wrapper'>
-                            <Link to="/register" className='signUp-wrapper-link'>
-                                <p>Create account</p> 
-                            </Link>
-                            <FaLongArrowAltRight color='#8a8a8a' />
                         </div>
                     </form>
             </div>

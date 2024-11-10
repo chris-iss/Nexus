@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../signup/SignUp.css';
-import { FaLongArrowAltRight } from "react-icons/fa";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   // State for form inputs
@@ -9,7 +9,9 @@ const SignUp = () => {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [successful, setSuccessful] = useState(false);
   const [errors, setErrors] = useState({});
+
 
   // Input handlers
   const handleFirstnameInput = (e) => setFirstname(e.target.value);
@@ -72,6 +74,7 @@ const SignUp = () => {
         firstname, lastname, email, password
       });
       console.log("SignUp Successful", response);
+      setSuccessful(true)
     } catch (e) {
       console.log("Signup Error:", e);
     }
@@ -87,6 +90,9 @@ const SignUp = () => {
       </div>
       <div className='right-wrapper'>
         <form className="right-form-wrapper" onSubmit={handleSignUpSubmit}>
+            <div className='signup-header'>Sign Up</div>
+            <div className='signup-text'>Already a member? &nbsp;<span className='sigup-text-span'><Link to="/" className='sigup-text-span'>Log In</Link></span></div>
+            {successful === true ? <p className='registration'>Registration was Successful</p> : false}
           <div className="fname-input-wrapper">
             <label className="username-label">Firstname</label>
             <input type="text" value={firstname} onChange={handleFirstnameInput} className="right-form-username" name="firstname" />
@@ -111,15 +117,17 @@ const SignUp = () => {
             <p className="password-error">{errors.password}</p>
           </div>
 
-          <div className="signup-form-actions">
-            <button className="submit" type="submit">Sign Up</button>
-          </div>
+          <div className='btn-action'>
+            <div className="signup-form-actions">
+                <button className="submit" type="submit">Sign Up</button>
+            </div>
 
-          <div className="signUp-wrapper">
-            <a href="/" className="signUp-wrapper-link">
-              <p>Login</p>
-            </a>
-            <FaLongArrowAltRight color='#8a8a8a' />
+            {/* <div className="signUp-wrapper">
+                <a href="/" className="signUp-wrapper-link">
+                <p>Login</p>
+                </a>
+                <FaLongArrowAltRight color='#8a8a8a' />
+            </div> */}
           </div>
         </form>
       </div>
