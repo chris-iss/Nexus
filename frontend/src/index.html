@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #f6f6f6;">
+    <p>
+        <title>Document</title>
+    </p>
+    <!-- Student Dashboard -->
+
+    <p class="dashboard-header">Student
+        Dashboard</p>
+
+    <p class="dashboard-para">Welcome to your Student
+        Dashboard &ndash; your hub
+        for courses, progress, resources, and connections.</p>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard-item">
+            <a href="https://instituteofsustainabilitystudies.thinkific.com/enrollments" target="_blank"><img
+                    src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2024/11/20213628/2.webp"
+                    alt="Course 1" class="dashboard-img fr-fic fr-dii fr-draggable"></a>
+        </div>
+        <div class="dashboard-item">
+            <a href="https://courses.instituteofsustainabilitystudies.com/communities/Q29tbXVuaXR5LTMxMDQz/" target="_blank"><img
+                    src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2024/11/20214125/5.webp"
+                    alt="Course 3" class="dashboard-img fr-fic fr-dii fr-draggable"></a>
+        </div>
+        <div class="dashboard-item">
+            <a href="https://accounts.accredible.com/retrieve-credentials" target="_blank"><img
+                    src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2024/11/26214225/3.png"
+                    alt="Course 2" class="dashboard-img fr-fic fr-dii fr-draggable"></a>
+        </div>
+        <div class="dashboard-item">
+            <a href="https://courses.instituteofsustainabilitystudies.com/communities/Q29tbXVuaXR5LTMxMDQz/spaces/Q29tbXVuaXR5U3BhY2UtMTg4ODQ4/" target="_blank"><img
+                    src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2024/11/20214119/4.webp"
+                    alt="Course 1" class="dashboard-img fr-fic fr-dii fr-draggable"></a>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Styles -->
+    <style>
+        /* Force full width on main and all parent containers */
+        main.custom,
+        .rich-text__container,
+        .section__content,
+        .dashboard-container {
+            width: 82vw !important;
+            max-width: none !important;
+            margin: 0 auto;
+            padding: 0 !important;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            margin-left: 160px;
+        }
+
+        .dashboard-item {
+            flex: 1 1 30%;
+            max-width: 30%;
+            text-align: center;
+        }
+
+        .dashboard-header {
+            padding-top: 20px;
+            padding-bottom: -400px;
+            font-size: 45px;
+            font-weight: 500;
+            text-align: center;
+            font-family: Open Sans, sans-serif;
+            color: #172629;
+            margin-left: 80px;
+        }
+
+        .dashboard-para {
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #54595f;
+            margin-left: 60px;
+        }
+
+
+        /* Dashboard image styles */
+
+        .dashboard-img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.2s;
+        }
+
+        /* Add hover effect */
+
+        .dashboard-img:hover {
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        /* Responsive adjustments */
+
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                gap: 15px;
+            }
+
+            .dashboard-item {
+                flex: 1 1 45%;
+                max-width: 45%;
+            }
+
+            .dashboard-img {
+                height: 120px;
+            }
+
+            .dashboard-header {
+                margin: auto;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .dashboard-para {
+                margin: auto;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 40px;
+                margin: auto;
+            }
+
+            .dashboard-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .dashboard-img {
+                height: 190px;
+            }
+
+            .dashboard-header {
+                margin: auto;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .dashboard-para {
+                margin: auto;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+
+</html>

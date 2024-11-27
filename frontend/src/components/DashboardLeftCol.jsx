@@ -5,6 +5,9 @@ import { SiCoursera } from "react-icons/si";
 import { SlCalender } from "react-icons/sl";
 import { TbBrandZoom } from "react-icons/tb";
 import { MdPayments } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { SiXero } from "react-icons/si";
+
 
 const DashboardLeftCol = () => {
 
@@ -13,19 +16,24 @@ const DashboardLeftCol = () => {
         <div className="leftcol-icon">
             <img src="https://cdn.instituteofsustainabilitystudies.com/wp-content/uploads/2023/09/11114059/ISS_Logo_svg.svg" className="icon" alt="iss-logo" />
         </div>
-        <div className="dashboard">
+        <Link to="/dashboard" className="dashboard">
             <RxDashboard size={20} />
             <p>Dashboard</p>
-        </div>
+        </Link>
 
-        <div className="order-wrapper-row-1">
+        <Link to="/orders" className="order-wrapper-row-1">
             <IoIosAlbums size={20} className="point-icon" />
-            <p>Completed Orders</p>
-        </div>
+            <p>WooCommerce Orders</p>
+        </Link>
 
-        <div className="order-wrapper-row-1">
+        <Link to="/payments" className="order-wrapper-row-1">
             <MdPayments size={23} className="point-icon" />
-            <p>Course Payments</p>
+            <p>Online Payments</p>
+        </Link>
+        
+        <div className="order-wrapper-row-1">
+            <SiXero size={23} className="point-icon" />
+            <p>Xero Invoice</p>
         </div>
 
         <div className="order-wrapper-row-1">
@@ -46,4 +54,4 @@ const DashboardLeftCol = () => {
     )
 }
 
-export default DashboardLeftCol
+export default DashboardLeftCol;
